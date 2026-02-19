@@ -10,7 +10,10 @@ interface Message {
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hi! I'm Govind-Bot. Ask me anything about Govind's skills, experience, or projects!" }
+    { 
+      role: 'assistant', 
+      content: "Hi! I'm Govind-Bot. 🤖 I'd love to share insights into Govind's 11+ year journey—from his roots in Mechanical Engineering to leading large-scale IT projects. Want to know how he successfully managed the transition or about his impact on UP Government digital portals?" 
+    }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);

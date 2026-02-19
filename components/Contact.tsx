@@ -4,7 +4,7 @@ import { PROFILE } from '../constants';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 px-6">
+    <section id="contact" className="py-24 px-6 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="glass p-12 md:p-20 rounded-[40px] border border-white/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[80px]"></div>

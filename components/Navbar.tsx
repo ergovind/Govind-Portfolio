@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold gradient-text">GOVIND</a>
+        <a href="#" className="text-xl md:text-2xl font-bold gradient-text whitespace-nowrap">GOVIND KUMAR SINGH</a>
         
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
@@ -36,8 +36,6 @@ const Navbar: React.FC = () => {
             Hire Me
           </a>
         </div>
-
-        {/* Mobile menu button could be added here */}
       </div>
     </nav>
   );

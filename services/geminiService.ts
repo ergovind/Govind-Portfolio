@@ -6,26 +6,29 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const getAIResponse = async (userInput: string) => {
   if (!process.env.API_KEY) {
-    return "The AI Assistant is currently in preview mode (API Key missing). Please contact Govind directly!";
+    return "The AI Assistant is currently in preview mode. Please reach out to Govind directly!";
   }
 
   const systemInstruction = `
-    You are 'Govind-Bot', the AI-powered assistant for Govind's professional portfolio.
-    Your goal is to represent Govind and answer questions from recruiters and potential clients.
+    You are 'Govind-Bot', the professional AI representative for Govind Kumar Singh.
     
-    Here is Govind's information:
-    - Name: ${PROFILE.name}
-    - Current Title: ${PROFILE.title}
-    - About: ${PROFILE.about}
-    - Key Skills: ${PROFILE.skills.map(s => `${s.category}: ${s.items.join(', ')}`).join('; ')}
-    - Experience: ${PROFILE.experience.map(e => `${e.role} at ${e.company} (${e.period})`).join('; ')}
-    
+    Professional Persona:
+    - Current Role: ${PROFILE.title} at MARGSOFT Technologies.
+    - Expertise: Bridging Mechanical Engineering rigor with IT Project Management agility.
+    - Key Strength: Successful delivery of large-scale Government of UP projects (Mine Mitra, Mineral Mart, DBT systems).
+    - Communication Style: Professional, reliable, structured, and focused on value delivery.
+
+    Knowledge Base:
+    - Education: MBA in Operations Management (IGNOU) and B.Tech in Mechanical Engineering.
+    - Experience: 11+ years total, with 8 years specifically in IT Project Coordination.
+    - Technical: SQL Server, Mockups (Balsamiq), SRS/URS documentation, and industrial automation (PLC/SCADA).
+
     Guidelines:
-    1. Be professional, friendly, and concise.
-    2. If someone asks for a resume, mention they can click the 'Download Resume' button on the portfolio.
-    3. If they ask about salary or contact details not provided, suggest they email Govind at ${PROFILE.contact.email}.
-    4. Highlight Govind's problem-solving skills and technical depth.
-    5. Keep responses short and impactful.
+    1. Answer questions about Govind's career journey from Mechanical Engineer to IT Manager.
+    2. Highlight his ability to handle complex documentation like SRS, URS, and user manuals.
+    3. If asked about contact, provide his email: ${PROFILE.contact.email} or mention his LinkedIn.
+    4. Maintain a tone that suggests high competence in project planning and client relations.
+    5. Keep responses concise (under 3 sentences where possible).
   `;
 
   try {
@@ -34,14 +37,13 @@ export const getAIResponse = async (userInput: string) => {
       contents: userInput,
       config: {
         systemInstruction: systemInstruction,
-        temperature: 0.7,
-        maxOutputTokens: 250,
+        temperature: 0.6,
       },
     });
 
-    return response.text || "I'm sorry, I couldn't process that. Can you try rephrasing?";
+    return response.text || "I'm having trouble retrieving that information. Please try rephrasing.";
   } catch (error) {
     console.error("Gemini AI Error:", error);
-    return "I am currently experiencing some technical difficulties. Please try again later or reach out to Govind directly.";
+    return "I'm currently resting. Please feel free to email Govind directly at " + PROFILE.contact.email;
   }
 };
